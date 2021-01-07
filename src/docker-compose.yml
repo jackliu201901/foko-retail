@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: .
+    image:foko_jack
+    command: npm run
+    volumes:
+      - .:/
+      - /node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql      -
+    environment:
+      MYSQL_DATABASE=foko_jack
+      - MYSQL_IP=localhost
+      - MYSQL_MIGRATE=0
+      - MYSQL_PASSWORD=computer
+      - MYSQL_PORT=3306
