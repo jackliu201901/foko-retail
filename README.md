@@ -28,3 +28,8 @@ node ./src/createDb.js
 
 cd ../
 typeorm init --name fokoRetail --database foko_jack
+
+
+To run your application:
+// it will export data to EmployeeRecords_output.csv
+npm start -- --input=EmployeeRecords_input.csv --output=./

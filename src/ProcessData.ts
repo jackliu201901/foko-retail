@@ -61,14 +61,14 @@ export class ProcessData
         }
 
     }
-
+/*
     public initDB()
     {
         //save data to mysql
         let initDb = new InitDb;
         initDb.initDatabase();
         //  initDb.setConnect();
-    }
+    }*/
 
     /**
      * @name insertData
