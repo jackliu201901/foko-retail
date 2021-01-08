@@ -2,6 +2,7 @@ import { Validate } from "./models/Validate";
 import { InitDb } from "./models/InitDb";
 import "reflect-metadata";
 import { createConnection, Connection } from "typeorm";
+import {getManager} from "typeorm";
 import {Employee} from "./entity/Employee";
 import construct = Reflect.construct;
 const fs = require("fs");
@@ -61,14 +62,6 @@ export class ProcessData
         }
 
     }
-/*
-    public initDB()
-    {
-        //save data to mysql
-        let initDb = new InitDb;
-        initDb.initDatabase();
-        //  initDb.setConnect();
-    }*/
 
     /**
      * @name insertData
@@ -85,9 +78,9 @@ export class ProcessData
             for (let line = 0; line < this.newEmployee.length; line++) {
 
                 let employee = new Employee();
-
                 let employeeRepository = connection.getRepository(Employee);
                 let oneEmployee = await employeeRepository.findOne({employeeId: this.newEmployee[line][0]});
+
                 if (oneEmployee === undefined)
                 {
                     employee.employeeId = this.newEmployee[line][0];

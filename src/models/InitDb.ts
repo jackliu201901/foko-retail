@@ -23,6 +23,20 @@ export class InitDb {
         });
     }
 
+    public setConnect() {
+        this.connection = mysql.createConnection({
+            host: dbConfig.HOST,
+            user: dbConfig.USER,
+            password: dbConfig.PASSWORD,
+            database: dbConfig.DBNAME
+        });
+    };
+
+    public getConnect() {
+        return this.connection;
+    };
+
+
     public connectService () {
         this.connection.connect(function (errMessage) {
             if (errMessage)
@@ -39,5 +53,18 @@ export class InitDb {
                 console.log("Database " +  dbConfig.DBNAME + " created or connected success!");
         });
     };
+
+    public createTable() {
+        var tableSql = "CREATE TABLE IF NOT EXISTS employee (id INT(11) NOT NULL AUTO_INCREMENT, employeeId VARCHAR(50), firstName VARCHAR(50)," +
+            "lastName VARCHAR(50),phoneNumber VARCHAR(50),email VARCHAR(100),dateCreated CHAR(20), dateUpdated CHAR(20)," +
+            "PRIMARY KEY (id)) ENGINE=INNODB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;";
+        this.connection.query(tableSql, function (errMessage) {
+            if (errMessage)
+                throw errMessage;
+            else
+                console.log("Table employee created success! ");
+        });
+    };
+
 
 }

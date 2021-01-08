@@ -1,0 +1,13 @@
+version: '1.0'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./data/db:/var/lib/mysql
+    restart: always
+    container_name: mysql
+    environment:
+      - MYSQL_IP=localhost
+      - MYSQL_PORT=3306
+      - MYSQL_PASSWORD=computer
+      - MYSQL_DATABASE=foko_jack
