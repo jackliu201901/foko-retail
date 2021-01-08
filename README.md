@@ -22,6 +22,7 @@ npm install reflect-metadata --save
 
 npm install -g ts-node
 
+// create database foko_jack
 tsc ./src/createDb.ts
 
 node ./src/createDb.js
@@ -33,3 +34,8 @@ typeorm init --name fokoRetail --database foko_jack
 To run your application:
 // it will export data to EmployeeRecords_output.csv
 npm start -- --input=EmployeeRecords_input.csv --output=./
+
+configure db file
+1, ./src/config/db.config.ts
+2, ./src/ormconfig.json
+
